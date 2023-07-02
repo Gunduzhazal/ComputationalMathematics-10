@@ -1,0 +1,45 @@
+
+## Data 605 - Assignment 10
+
+**Hazal Gunduz**
+
+**Exercise:** Smith is in jail and has 1 dollar; he can get out on bail if he has 8 dollars. A guard agrees to make a series of bets with him. If Smith bets A dollars, he wins A dollars with probability .4 and loses A dollars with probability .6.
+
+Find the probability that he wins 8 dollars before losing all of his money if
+
+(a) he bets 1 dollar each time (timid strategy).
+
+(b) he bets, each time, as much as possible but not more than necessary to bring his fortune up to 8 dollars (bold strategy).
+
+(c) Which strategy gives Smith the better chance of getting out of jail?
+
+**(a) (timid strategy)**
+
+```{r}
+p <- 0.4
+q <- 0.6
+r <- q / p
+
+A <- (1 - (q / p)^1) / (1 - (q / p)^8)
+A
+```
+
+**The probability that he wins 8 dollars before losing all of his money if (a) he bets 1 dollar each time (timid strategy) is 0.0203**
+
+**(b) (bold strategy)**
+
+**Since Smith tries to double his money each time, he can't reach every integer before 8. It can go from 1 to 0 or 2. It can go from 2 to 4 or 0. Finally it can go from 4 to 8 or 0.**
+
+```{r}
+B <- dbinom(3, 3, p)
+B
+```
+
+**The probability that he wins 8 dollars before losing all of his money if (b) he bets, each time, as much as possible but not more than necessary to bring his fortune up to 8 dollars (bold strategy) is 0.064**
+
+**(c) (better strategy)**
+
+**Comparing the probabilities of  strategies, the bold strategy of "0.064" gives to Smith a better and higher chance than the timid strategy of "0.0203".**
+
+Rpubs => https://rpubs.com/gunduzhazal/1023509
+
